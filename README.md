@@ -12,4 +12,4 @@ I built this because it takes too much time to translate stuff at work. You will
 
 ## Dependencies
 ```sh
-    pip install -r requirements.txt```
+    pip install -r requirements.txt
