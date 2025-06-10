@@ -8,8 +8,17 @@ Uses the latest Google GenAI models on LangChain to automate translation of Powe
 
 I built this because it takes too much time to translate stuff at work. You will obviously have to resize the text boxes. 
 
+## Features
+- Contextual translation to improve accuracy
+- Comes in  a variety of common languages (I only ever use English, VIetnamese and Japanese)
+- Has a chat box if you want to add even more context for it
+- It is async
 
 
-## Dependencies
+## Requirements
+
+You need to run this with an API key you can yoink from Google AI Studio.
+
+Dependencies:
 ```sh
     pip install -r requirements.txt
