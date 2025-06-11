@@ -13,6 +13,7 @@ I built this because it takes too much time to translate stuff at work. You will
 - Comes in  a variety of common languages (I only ever use English, VIetnamese and Japanese)
 - Has a chat box if you want to add even more context for it
 - It is async
+- Comes with a GUI
 
 
 ## Requirements
