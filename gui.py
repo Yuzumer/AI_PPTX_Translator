@@ -4,7 +4,33 @@ import threading
 import queue
 import os
 import asyncio
+import sys
+import subprocess
 from workflow import run_translation_workflow
+
+
+def open_file_in_explorer(path):
+    """
+    Opens the file manager and highlights the specified file.
+    Works on Windows, macOS, and Linux.
+    """
+    if not path or not os.path.exists(path):
+        print(f"File path does not exist: {path}")
+        return
+
+    try:
+        if sys.platform == "win32":
+            # For Windows, use explorer with /select argument
+            subprocess.run(['explorer', '/select,', os.path.normpath(path)])
+        elif sys.platform == "darwin":
+            # For macOS, use open with -R argument
+            subprocess.run(['open', '-R', os.path.normpath(path)])
+        else:
+            # For Linux, open the containing directory
+            # xdg-open is the standard, but might need others as fallback
+            subprocess.run(['xdg-open', os.path.dirname(os.path.normpath(path))])
+    except Exception as e:
+        print(f"Error opening file explorer: {e}")
 
 
 class TranslatorApp:
@@ -80,6 +106,9 @@ class TranslatorApp:
                 elif message_type == 'finished':
                     self.is_running = False
                     self.translate_button.config(state=tk.NORMAL)
+                    # If the payload (output_path) is valid, open the folder
+                    if payload:
+                        open_file_in_explorer(payload)
                     return  # Stop checking the queue
         except queue.Empty:
             pass
@@ -102,8 +131,6 @@ class TranslatorApp:
         selected_language = self.language_var.get()
         self.status_queue = queue.Queue()
 
-        # This wrapper function is what our thread will actually run.
-        # Its job is to set up and run the asyncio event loop.
         def thread_starter():
             asyncio.run(run_translation_workflow(
                 self.input_path,
