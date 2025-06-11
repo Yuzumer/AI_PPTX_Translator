@@ -35,7 +35,7 @@ async def translate_text_elements_in_batch(smart_batches, context_briefing, targ
     status_queue.put(('log', f"--- Starting Phase 3 (Async): Translating to {target_language} ---"))
 
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+        llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro-preview-06-05")
     except Exception as e:
         status_queue.put(('log', f"ERROR: Error initializing AI model: {e}"))
         return None
