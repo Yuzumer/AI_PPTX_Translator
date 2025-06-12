@@ -10,17 +10,18 @@ I built this because it takes too much time to translate stuff at work. You will
 
 ## Features
 - Uses an LLM for interpretation and translation.
-- Contextual translation to improve accuracy and naturalness
-- Parses Powerpoint documents to
+- Contextual translation to improve accuracy and naturalness 
+- Parses and reassemble Powerpoint documents accurately.
 - Comes in  a variety of common languages (I only ever use English, VIetnamese and Japanese)
 - Has a chat box if you want to add even more context for it
 - Batch processing & Async to improve speed
-- Has a basic GUI to run off.
+- Has a basic GUI.
 
 
 ## Requirements
 
-You need to run this with an API key you can yoink from Google AI Studio here: https://aistudio.google.com/apikey
+You need to run this with an API key you can yoink from Google AI Studio here: https://aistudio.google.com/apikey.
+Run `gui.py` with the API key configurated.
 
 Dependencies:
 ```sh
